@@ -54,8 +54,6 @@ local function run_once(cmd_arr)
         awful.spawn.with_shell(string.format("pgrep -u $USER -x %s > /dev/null || (%s)", findme, cmd))
     end
 end
-
-run_once({ "unclutter -root" }) -- entries must be comma-separated
 -- }}}
 
 -- {{{ Variable definitions
@@ -73,15 +71,15 @@ local themes = {
     "vertex",          -- 10
 }
 
-local chosen_theme = themes[5]
+local chosen_theme = themes[6]
 local modkey       = "Mod4"
 local altkey       = "Mod1"
-local terminal     = "xterm"
+local terminal     = "lilyterm"
 local editor       = os.getenv("EDITOR") or "nano"
 local gui_editor   = "gvim"
-local browser      = "firefox"
+local browser      = "chromium-browser"
 local guieditor    = "atom"
-local scrlocker    = "xlock"
+local scrlocker    = "xtrlock"
 
 awful.util.terminal = terminal
 awful.util.tagnames = { "1", "2", "3", "4", "5" }
