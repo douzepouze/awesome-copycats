@@ -222,11 +222,8 @@ root.buttons(my_table.join(
 
 -- {{{ Key bindings
 globalkeys = my_table.join(
-    -- Take a screenshot
-    awful.key({ modkey }, "s", function() os.execute("screenshot") end, {description = "take a screenshot", group = "hotkeys"}),
-
     -- X screen locker
-    awful.key({ modkey  }, "l", function () os.execute(scrlocker) end, {description = "lock screen", group = "hotkeys"}),
+    awful.key({ modkey }, "s", function () os.execute(scrlocker) end, {description = "lock screen", group = "hotkeys"}),
 
     -- Hotkeys
     awful.key({ modkey, }, "F1",      hotkeys_popup.show_help, {description = "show help", group="awesome"}),
