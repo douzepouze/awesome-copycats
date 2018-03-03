@@ -12,6 +12,7 @@ local ipairs, string, os, table, tostring, tonumber, type = ipairs, string, os, 
 local gears         = require("gears")
 local awful         = require("awful")
                       require("awful.autofocus")
+awful.util.shell = "/bin/sh"
 local wibox         = require("wibox")
 local beautiful     = require("beautiful")
 local naughty       = require("naughty")
@@ -192,7 +193,6 @@ awful.util.mymainmenu = freedesktop.menu.build({
         -- other triads can be put here
     }
 })
---menubar.utils.terminal = terminal -- Set the Menubar terminal for applications that require it
 -- }}}
 
 -- {{{ Screen
@@ -309,10 +309,6 @@ globalkeys = my_table.join(
         end,
         {description = "toggle wibox", group = "awesome"}),
 
-    -- On the fly useless gaps change
---    awful.key({ altkey, "Control" }, "+", function () lain.util.useless_gaps_resize(1) end, {description = "increment useless gaps", group = "tag"}),
---    awful.key({ altkey, "Control" }, "-", function () lain.util.useless_gaps_resize(-1) end, {description = "decrement useless gaps", group = "tag"}),
---
     -- Dynamic tagging
     awful.key({ modkey, "Shift" }, "n", function () lain.util.add_tag() end,
               {description = "add new tag", group = "tag"}),
@@ -416,7 +412,6 @@ globalkeys = my_table.join(
                   }
               end,
               {description = "lua execute prompt", group = "awesome"})
-    --]]
 )
 
 clientkeys = my_table.join(
@@ -539,7 +534,7 @@ awful.rules.rules = {
 
     -- Titlebars
     { rule_any = { type = { "dialog", "normal" } },
-      properties = { titlebars_enabled = true } },
+      properties = { titlebars_enabled = false} },
 
     -- Set Firefox to always map on the first tag on screen 1.
     { rule = { class = "Firefox" },
