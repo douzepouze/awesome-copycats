@@ -233,8 +233,8 @@ globalkeys = my_table.join(
     awful.key({ modkey, }, "Escape", awful.tag.history.restore, {description = "go back", group = "tag"}),
 
     -- Non-empty tag browsing
-    awful.key({ modkey }, "Left", function () lain.util.tag_view_nonempty(-1) end, {description = "view  previous nonempty", group = "tag"}),
-    awful.key({ modkey }, "Right", function () lain.util.tag_view_nonempty(1) end, {description = "view  previous nonempty", group = "tag"}),
+    awful.key({ modkey, "Control" }, "Left", function () lain.util.tag_view_nonempty(-1) end, {description = "view  previous nonempty", group = "tag"}),
+    awful.key({ modkey, "Control" }, "Right", function () lain.util.tag_view_nonempty(1) end, {description = "view  previous nonempty", group = "tag"}),
 
     -- Default client focus
     awful.key({ modkey, "Control"}, "j",
