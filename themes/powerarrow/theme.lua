@@ -74,7 +74,7 @@ theme.widget_mail                               = theme.dir .. "/icons/mail.png"
 theme.widget_mail_on                            = theme.dir .. "/icons/mail_on.png"
 theme.widget_task                               = theme.dir .. "/icons/task.png"
 theme.widget_scissors                           = theme.dir .. "/icons/scissors.png"
-theme.tasklist_plain_task_name                  = true
+theme.tasklist_plain_task_name                  = false
 theme.tasklist_disable_icon                     = true
 theme.useless_gap                               = 0
 theme.titlebar_close_button_focus               = theme.dir .. "/icons/titlebar/close_focus.png"
@@ -241,7 +241,7 @@ function theme.at_screen_connect(s)
     gears.wallpaper.maximized(wallpaper, s, true)
 
     -- Tags
-    awful.tag(awful.util.tagnames, s, awful.layout.layouts)
+    awful.tag(awful.util.tagnames, s, awful.layout.suit.tile)
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
