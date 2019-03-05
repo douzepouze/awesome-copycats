@@ -83,7 +83,7 @@ local guieditor    = "atom"
 local scrlocker    = "xtrlock"
 
 awful.util.terminal = terminal
-awful.util.tagnames = { "1", "2", "3", "4", "5" }
+awful.util.tagnames = { "term", "ide", "web", "pdf", "mail", "irc" }
 awful.layout.layouts = {
     awful.layout.suit.floating,
     awful.layout.suit.tile,
@@ -537,8 +537,14 @@ awful.rules.rules = {
       properties = { titlebars_enabled = false} },
 
     -- Set Firefox to always map on the first tag on screen 1.
-    { rule = { class = "Firefox" },
-      properties = { screen = 1, tag = awful.util.tagnames[1] } },
+    { rule = { class = "Chromium" },
+      properties = { screen = 1, tag = "web" } },
+
+    { rule = { class = "Thunderbird" },
+     properties = { screen = 1, tag = "mail" }},
+
+    { rule = { class = "okular" },
+      properties = { screen = 1, tag = "pdf" }},
 
     { rule = { class = "Gimp", role = "gimp-image-window" },
           properties = { maximized = true } },
@@ -627,7 +633,16 @@ function border_adjust(c)
     end
 end
 
+-- No border for maximized clients
+function border_adjust_unfocused(c)
+    if awful.client.getmaster() == c then
+        c.border_color = beautiful.border_marked
+    else
+        c.border_color = beautiful.border_normal
+    end
+end
+
 client.connect_signal("focus", border_adjust)
 client.connect_signal("property::maximized", border_adjust)
-client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+client.connect_signal("unfocus", border_adjust_unfocused)
 -- }}}
